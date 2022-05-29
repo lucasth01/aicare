@@ -33,10 +33,12 @@ const register = async (req, res) => {
         )`, (err, result) => {
             if(err) {
                 res.status(400).json({
+                    error: true,
                     message: err.message
                 })
             }
             res.status(201).json({
+                error: false,
                 message: `New user ${name} successfully created!`,
                 token: generateToken(id)
             })
@@ -44,6 +46,7 @@ const register = async (req, res) => {
 
     } catch(err) {
         res.status(400).json({
+            error: true,
             message: err.message
         })
     }
@@ -53,6 +56,10 @@ const login = async (req, res) => {
     const { email, password } = req.body
 
     try {
+        if(!email || !password) {
+            throw new Error('Please fill all the fields.')
+        }
+
         const { rows } = await client.query(`SELECT * FROM users WHERE email='${email}'`)
 
         if(rows.length === 0) {
@@ -63,6 +70,7 @@ const login = async (req, res) => {
         
         if(bcrypt.compare(password, user.password)){
             res.status(201).json({
+                error: false,
                 message: 'Login successful.',
                 LoginInfo: {
                     id: user.id,
@@ -79,6 +87,7 @@ const login = async (req, res) => {
 
     } catch(err) {
         res.status(400).json({
+            error: true,
             message: err.message
         })
     }

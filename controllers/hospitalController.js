@@ -8,6 +8,7 @@ const getAllHospitals = async (req, res) => {
     client.query(query, (err, result) => {
         if(err) {
             res.status(400).json({
+                error: true,
                 message: err.message
             })
         }
@@ -21,6 +22,7 @@ const getAllHospitals = async (req, res) => {
         )
 
         res.json({
+            error: false,
             message: 'Succesfully retrieved all hospitals.',
             listStory: list
         })
@@ -47,16 +49,19 @@ const addHospital = async (req, res) => {
             '${id}', '${name}', '${lat}','${long}')`, (err, result) => {
             if(err) {
                 res.status(400).json({
+                    error: true,
                     message: err.message
                 })
             }
             res.status(201).json({
+                error: false,
                 message: `New hospital ${name} successfully created!`,
             })
         })
 
     } catch(err) {
         res.status(400).json({
+            error: true,
             message: err.message
         })
     }
