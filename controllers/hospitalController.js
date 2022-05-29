@@ -12,7 +12,7 @@ const getAllHospitals = async (req, res) => {
             })
         }
 
-        const list = result.rows.map(row => ({
+        const list = rows.map(row => ({
                 id: row.id,
                 hospitalName: row.name,
                 lat: row.lat,
@@ -35,12 +35,12 @@ const addHospital = async (req, res) => {
             throw new Error('Please fill all the fields.')
         }
 
-        client.query(`SELECT * FROM hospitals WHERE lat=${lat} and long=${long}`, (err, result) => {
-            if(result.rows.length === 1) {
-                throw new Error('The hospital is already recorded.')
-            }
-        })
+        const { rows } = await client.query(`SELECT * FROM hospitals WHERE lat=${lat} and long=${long}`)
 
+        if(rows.length === 1) {
+            throw new Error('The hospital is already recorded.')
+        }
+        
         const id = 'hospital-'+ uuidv4()
 
         client.query(`INSERT INTO hospitals VALUES (

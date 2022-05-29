@@ -16,11 +16,11 @@ const register = async (req, res) => {
             throw new Error('Please fill all the fields.')
         }
 
-        client.query(`SELECT * FROM users WHERE email='${email}'`, (err, result) => {
-            if(result.rows.length === 1) {
-                throw new Error('User with that email already exists.')
-            }
-        })
+        const { rows } = await client.query(`SELECT * FROM users WHERE email='${email}'`)
+
+        if(rows.length === 1) {
+            throw new Error('User with that email already exists.')
+        }
 
         const salt = await bcrypt.genSalt(10)
         const hashed = await bcrypt.hash(password, salt)
@@ -53,29 +53,29 @@ const login = async (req, res) => {
     const { email, password } = req.body
 
     try {
-        client.query(`SELECT * FROM users WHERE email='${email}'`, (error, result) => {
-            if(result.rows.length === 0) {
-                throw new Error('User does not exist.')
-            }
-    
-            const user = result.rows[0]
-            
-            if(bcrypt.compare(password, user.password)){
-                res.status(201).json({
-                    message: 'Login successful.',
-                    LoginInfo: {
-                        id: user.id,
-                        name: user.name,
-                        email: user.email,
-                        number: user.number,
-                        token: generateToken(user.id)
-                    }
-                })
-            } else {
-                res.status(400)
-                throw new Error('Invalid credentials')
-            }
-        })
+        const { rows } = await client.query(`SELECT * FROM users WHERE email='${email}'`)
+
+        if(rows.length === 0) {
+            throw new Error('User does not exist.')
+        }
+
+        const user = rows[0]
+        
+        if(bcrypt.compare(password, user.password)){
+            res.status(201).json({
+                message: 'Login successful.',
+                LoginInfo: {
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                    number: user.number,
+                    token: generateToken(user.id)
+                }
+            })
+        } else {
+            res.status(400)
+            throw new Error('Invalid credentials')
+        }
 
     } catch(err) {
         res.status(400).json({
