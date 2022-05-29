@@ -1,7 +1,6 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
@@ -21,5 +20,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasth01/aicare.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lucasth01/aicare/issues"
+  },
+  "homepage": "https://github.com/lucasth01/aicare#readme",
+  "description": ""
 }
