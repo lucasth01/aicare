@@ -7,6 +7,7 @@ env_variables:
   DB_PASS: aicarejuara
   DB_NAME: aicare
   JWT_SECRET: aicare123
+  FIREBASE_SECRET: b06b8f1ef61533c3a976b92b1725cb39fd2e6408
 
 beta_settings:
   # The connection name of your instance, available by using
