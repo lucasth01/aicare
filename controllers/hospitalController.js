@@ -1,4 +1,3 @@
-const { hospitals } = require('./data')
 const { client } = require('../config/connectdb')
 const { v4: uuidv4 } = require('uuid')
 
@@ -13,7 +12,7 @@ const getAllHospitals = async (req, res) => {
             })
         }
 
-        const list = rows.map(row => ({
+        const list = result.rows.map(row => ({
                 id: row.id,
                 hospitalName: row.name,
                 lat: row.lat,

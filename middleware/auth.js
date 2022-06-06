@@ -1,22 +1,31 @@
 const jwt = require('jsonwebtoken')
+const { client } = require('../config/connectdb')
 
-const protect = async (req, res, next) => {
+const authorize = async (req, res, next) => {
+    let token
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
         try {
             token = req.headers.authorization.split(' ')[1]
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
-            //cari user dengan id sesuai dengan decoded
-            //req.user = await User.findById(decoded.id).select('-password')
+
+            const { rows } = await client.query(`SELECT * from users where id = '${decoded.id}'`)
+            req.user = rows[0]
             next()
+
         } catch (err) {
-            console.log(err)
-            res.status(401)
-            throw new Error('Not authorized.')
+            res.status(401).json({
+                error: true,
+                message: 'User not authorized.'
+            })
         }
     }
 
     if(!token) {
-        res.status(401)
-        throw new Error('Not authorized, no token.')
+        res.status(401).json({
+            error: true,
+            message: 'User not authorized, no token received.'
+        })
     }
 }
+
+module.exports = { authorize }
