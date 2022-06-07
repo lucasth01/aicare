@@ -21,7 +21,7 @@ function getPublicUrl(filename) {
 let ImgUpload = {}
 
 ImgUpload.uploadToGcs = (req, res, next) => {
-    if (!req.file) return next()
+    if (!req.file) res.json({ message: 'No file uploaded.' })
 
     const gcsname = 'image-' + dateFormat(new Date(), "yyyymmdd-HHMMss")
     const file = bucket.file(gcsname)
