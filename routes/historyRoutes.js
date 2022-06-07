@@ -9,8 +9,7 @@ const Multer = require('multer')
 const imgUpload = require('../middleware/imageUpload')
 
 const multer = Multer({
-    storage: Multer.MemoryStorage,
-    fileSize: 5 * 1024 * 1024
+    storage: Multer.MemoryStorage
 })
 
 router.route('/').get(authorize, getHistory).post(authorize, multer.single('file'), imgUpload.uploadToGcs, addHistory)
