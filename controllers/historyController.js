@@ -32,37 +32,41 @@ const getHistory = async (req, res) => {
 const addHistory = async (req, res) => {
     const { label, percentage } = req.body
     const userid = req.user.id
+    const image = req.file
 
-    const id = 'record-' + uuidv1() 
-    const recordRef = db.collection('history').doc(id)
+    console.log(image)
+    res.send('test')
 
-    try {
-        if(!label || !percentage) {
-            throw new Error('Please fill all the fields.')
-        }
+    // const id = 'record-' + uuidv1() 
+    // const recordRef = db.collection('history').doc(id)
 
-        const newRecord = {
-            id,
-            userid,
-            outputlabel: label,
-            outputpercentage: percentage,
-            date: new Date()
-        }
+    // try {
+    //     if(!label || !percentage) {
+    //         throw new Error('Please fill all the fields.')
+    //     }
 
-        await recordRef.set(newRecord)
+    //     const newRecord = {
+    //         id,
+    //         userid,
+    //         outputlabel: label,
+    //         outputpercentage: percentage,
+    //         date: new Date()
+    //     }
 
-        res.json({
-            error: false,
-            message: 'Record successfully added to history.',
-            newRecord
-        })
+    //     await recordRef.set(newRecord)
 
-    } catch (err) {
-        res.status(400).json({
-            error: true,
-            message: err.message
-        })
-    }
+    //     res.json({
+    //         error: false,
+    //         message: 'Record successfully added to history.',
+    //         newRecord
+    //     })
+
+    // } catch (err) {
+    //     res.status(400).json({
+    //         error: true,
+    //         message: err.message
+    //     })
+    // }
 }
 
 module.exports = {

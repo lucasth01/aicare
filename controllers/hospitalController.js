@@ -23,7 +23,7 @@ const getAllHospitals = async (req, res) => {
         res.json({
             error: false,
             message: 'Succesfully retrieved all hospitals.',
-            listStory: list
+            listHospital: list
         })
     })
 }
