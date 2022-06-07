@@ -12,6 +12,6 @@ const upload = multer({
     storage: multer.memoryStorage()
 })
 
-router.route('/').get(authorize, getHistory).post(upload.single('file'), authorize, imgUpload.uploadToGcs, addHistory)
+router.route('/').get(authorize, getHistory).post(upload.single('file'), imgUpload.uploadToGcs, addHistory)
 
 module.exports = router
