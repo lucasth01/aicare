@@ -51,9 +51,7 @@ async function uploadFile(req, res, next) {
     });
 
     console.log(`${filePath} uploaded to ${bucketName}`);
-  }
-
-  uploadFile().catch((err) => res.json({ message: err.message }));
-  next()
+    next()
+}
 
 module.exports = uploadFile
