@@ -10,7 +10,11 @@ env_variables:
   FIREBASE_SECRET: b06b8f1ef61533c3a976b92b1725cb39fd2e6408
   GCS_BUCKET: aicare-bucket
   GCLOUD_PROJECT: aicare-development
-  GCS_KEYFILE: projects/568764582551/secrets/cloud-storage-key
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/568764582551/secrets/cloud-storage-key
+    env: 'GCS_KEYFILE'
 
 beta_settings:
   # The connection name of your instance, available by using
