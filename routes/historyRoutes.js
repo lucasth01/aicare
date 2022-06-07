@@ -5,13 +5,13 @@ const {
     addHistory
 } = require('../controllers/historyController')
 const { authorize } = require('../middleware/auth')
-const Multer = require('multer')
+const multer = require('multer')
 const imgUpload = require('../middleware/imageUpload')
 
-const multer = Multer({
-    storage: Multer.MemoryStorage
+const upload = multer({
+    storage: multer.memoryStorage()
 })
 
-router.route('/').get(authorize, getHistory).post(authorize, multer.single('file'), imgUpload.uploadToGcs, addHistory)
+router.route('/').get(authorize, getHistory).post(authorize, upload.single('file'), imgUpload.uploadToGcs, addHistory)
 
 module.exports = router
