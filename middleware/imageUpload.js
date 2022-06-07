@@ -1,14 +1,10 @@
-'use strict'
 const { Storage } = require('@google-cloud/storage')
 const fs = require('fs')
 const dateFormat = require('dateformat')
-const path = require('path');
-
-const pathKey = path.resolve('./cloud-storage-key.json')
 
 const gcs = new Storage({
     projectId: 'aicare-development',
-    keyFilename: pathKey
+    keyFilename: './cloud-storage-key.json'
 })
 
 const bucketName = 'aicare-bucket'
