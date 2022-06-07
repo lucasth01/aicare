@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "aicare-development",
+  "private_key_id": "1cf43792d56cf81c17608388a6e3afe334060543",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCuNcRGTt5N15sB\n5HIxAOR/JqV3Z31gP6vET32mXUDAI0Wzc4rEnwmNS7dFt2mBZadO5yBalFjrj5fw\nzkbmCOYBzoMd4hNbGPNXjyQfMrLY8h5xfBu0xZWo7Yq8ebP/XNLBuF2MKsMcIZG8\nopVhegEIid096foULVEzdvcZBPG34C2GnsTnmSPNHB43xZOpNeXXk6fGoA7XubjS\nojlFv/o2ZRSD1xpfgftwO6/KlW12RRrxKc6om0356uonc+D+XmnwyJqdaK8Dbly/\nHaJSVmefQbQY+3+zev68TVfsFvihHft5CieUBarUblVVl4fB4qrbTJW+Ln4OYg63\nPxsyqFt3AgMBAAECggEAARkB9vwdA0FUXRiiH8l6JxpIg5/tCHrxx9lFCrB7LZOk\nNWbeeZV3LP93MThSBkFscLurFq/pKYXsfcb/2XnEUpUls5Mc7uMRhsqLmsbxK3Bx\nx+J/679l25/M4SgktrRCFNEt9w1M0KWeK0xjoDz/uo6LYfGnwOeSMelSJ1/tGcI2\n6igEorxsxoCml7MGZuPTILsI0NJB4mnkUOdtvocFDnXcxBsActnMSvpi/3Ks8ocG\nPjNYnTb7/rWG1CImPVA5Ld6IDeE6WTwVKidN/g3xVkIXKoqHSyxo9q/5+Y7JYXg2\nGCup99WyZGB7y416ZFnMjsLVXcVx0dadELXiDlbw0QKBgQDYfbTDRyQszPB2KZGD\nbjN6OqSFyAAcGsjLJyRz+Usaal65ZLVp+6UbhdY70bfZyENXzyfEOYPRzS04z/Wu\nXIKausInGWQMIqZaAc8vGJWLZNnnua2XCWwQSu5UWOFQY4e5Zupq+ZTmKySf+aVq\nt8P9RHFE6arY0M+M3JgIqIyJ5wKBgQDOALlviu2axzdpJ+RxIZ+qvlg30PrHgwv1\nwJb1Xv6NQRI8SEt3hB5uH6JTQJoaWx/4uKqkGzxYPHeU92qKuJQJ+pZTBiIuzPOS\ndAAk5AkU3MVaQaru4FB9sQVVE1/rhGjTPnYqpKLXsiW/q0Qm26TQTZCaZmuVbcvy\nGmaJdsoP8QKBgQDCaIA/LE+L+62kLsgBYqDPjoHXsTaIBnVyGYBetOuAmSzfB1Ty\nC4zFHna32ShkZbYz0E9BovSBHuMRNY7GOUT/dd6MBf0V+Lex9BX9kPIZ70LPGKqO\nC2QDbYaAMCCFdBuZnpW74syXtP56ulCVeNiDQ0cEP2GwujLnp+DPRayO2QKBgQCU\nWF0w/+Ce5vr2FK4i8c2jDTNF7o3JAouoSynqRKAWZFeXZZBC3rdzIgCo5wqSFDDv\n0TvAtYQ9Hj4W3hyxDL4+eV+rJe2Tui9ktXgtGLGZfmn31vYa0xnjiYiHfU5DsbQy\n+vXpO2mw3i7k2ZZYTS9geZq6NSsgDlMhYvWX5B0aYQKBgAljPQg9I8wVNmXMpQqu\nlM5Wnrd04QHFePQgRSOuhAF+UVNiI63mQQZ1yW87UaLisbKjfB1OC2Sn7LtnuoQX\nTnpfu7trxI9d5IfZ6wKqPFYtcyzeQIpgNvdJ9O3D28hctRO7QBvPICDxZTR6/ryc\nfICnOUnmmNA0pEiLOSMyX3FH\n-----END PRIVATE KEY-----\n",
+  "client_email": "cloudstorage-admin@aicare-development.iam.gserviceaccount.com",
+  "client_id": "109161019769058371522",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cloudstorage-admin%40aicare-development.iam.gserviceaccount.com"
+}

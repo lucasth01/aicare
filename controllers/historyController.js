@@ -1,5 +1,3 @@
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
 const { v1: uuidv1 } = require('uuid')
 const firebase = require('../config/firestore')
 
