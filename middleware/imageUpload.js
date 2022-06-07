@@ -34,7 +34,8 @@ ImgUpload.uploadToGcs = (req, res, next) => {
 
     stream.on('error', (err) => {
         req.file.cloudStorageError = err
-        next(err)
+        console.log(err)
+        next()
     })
 
     stream.on('finish', () => {

@@ -35,16 +35,19 @@ const addHistory = async (req, res) => {
     const recordRef = db.collection('history').doc(id)
 
     try {
-        if(!label || !percentage) {
+        if(!label || !percentage || !req.file) {
             throw new Error('Please fill all the fields.')
         }
+
+        const imageURL = req.file.cloudStoragePublicUrl
 
         const newRecord = {
             id,
             userid,
             outputlabel: label,
             outputpercentage: percentage,
-            date: new Date()
+            date: new Date(),
+            imageURL
         }
 
         await recordRef.set(newRecord)
