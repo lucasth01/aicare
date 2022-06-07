@@ -3,8 +3,7 @@ const fs = require('fs')
 const dateFormat = require('dateformat')
 
 const gcs = new Storage({
-    projectId: 'aicare-development',
-    keyFilename: './cloud-storage-key.json'
+    projectId: 'aicare-development'
 })
 
 const bucketName = 'aicare-bucket'
