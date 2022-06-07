@@ -7,11 +7,11 @@ const gcs = new Storage({
 })
 
 const bucketName = 'aicare-bucket'
-const directory = '/aicare-ml/images/'
+const directory = 'aicare-ml/images/'
 const bucket = gcs.bucket(bucketName)
 
 function getPublicUrl(filename) {
-    return 'https://storage.googleapis.com/' + bucketName + filename;
+    return 'https://storage.googleapis.com/' + bucketName + '/' + filename;
 }
 
 let ImgUpload = {}
