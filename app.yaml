@@ -8,7 +8,7 @@ env_variables:
   DB_NAME: aicare
   JWT_SECRET: aicare123
   FIREBASE_SECRET: b06b8f1ef61533c3a976b92b1725cb39fd2e6408
-  GCS_BUCKET: aicare-bucket
+  GCS_BUCKET: aicare-bucket/aicare-ml/images
   GCLOUD_PROJECT: aicare-development
   GCS_KEYFILE: ./cloud-storage-key.json
 
