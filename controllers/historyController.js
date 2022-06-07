@@ -39,7 +39,7 @@ const addHistory = async (req, res) => {
             throw new Error('Please fill all the fields.')
         }
 
-        const imageURL = req.file.cloudStoragePublicUrl
+        const imageURL = String.toString(req.file.cloudStoragePublicUrl)
 
         const newRecord = {
             id,
