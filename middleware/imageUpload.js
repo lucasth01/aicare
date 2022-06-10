@@ -16,32 +16,31 @@ function getPublicUrl(filename) {
 }
 
 const uploadImage = (req, res, next) => {
-    if (req.file === undefined){
-        next()
+    if (req.file !== undefined){
+        const gcsname = IMAGE_DIR + 'image-' + dateFormat(new Date(), "yyyymmdd-HHMMss")
+        const file = bucket.file(gcsname)
+    
+        const stream = file.createWriteStream({
+            metadata: {
+                contentType: req.file.mimetype
+            }
+        })
+    
+        stream.on('error', (err) => {
+            req.file.cloudStorageError = err
+            console.log(err)
+            next()
+        })
+    
+        stream.on('finish', () => {
+            req.file.cloudStorageObject = gcsname
+            req.file.cloudStoragePublicUrl = getPublicUrl(gcsname)
+            next()
+        })
+    
+        stream.end(req.file.buffer)
     }
-
-    const gcsname = IMAGE_DIR + 'image-' + dateFormat(new Date(), "yyyymmdd-HHMMss")
-    const file = bucket.file(gcsname)
-
-    const stream = file.createWriteStream({
-        metadata: {
-            contentType: req.file.mimetype
-        }
-    })
-
-    stream.on('error', (err) => {
-        req.file.cloudStorageError = err
-        console.log(err)
-        next()
-    })
-
-    stream.on('finish', () => {
-        req.file.cloudStorageObject = gcsname
-        req.file.cloudStoragePublicUrl = getPublicUrl(gcsname)
-        next()
-    })
-
-    stream.end(req.file.buffer)
+    next()
 }
 
 const uploadProfile = (req, res, next) => {
@@ -69,6 +68,7 @@ const uploadProfile = (req, res, next) => {
     })
 
     stream.end(req.file.buffer)
+
 }
 
 module.exports = { uploadImage, uploadProfile }
