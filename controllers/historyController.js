@@ -41,7 +41,7 @@ const addHistory = async (req, res) => {
 
         let newRecord
 
-        if(req.file.cloudStoragePublicUrl !== undefined) {
+        if(req.file !== undefined) {
             const imageURL = req.file.cloudStoragePublicUrl
             newRecord = {
                 id,

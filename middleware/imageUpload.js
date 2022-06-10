@@ -39,8 +39,7 @@ const uploadImage = (req, res, next) => {
         })
     
         stream.end(req.file.buffer)
-    }
-    next()
+    } else next()
 }
 
 const uploadProfile = (req, res, next) => {
