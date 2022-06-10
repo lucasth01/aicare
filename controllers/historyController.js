@@ -35,7 +35,7 @@ const addHistory = async (req, res) => {
     const recordRef = db.collection('history').doc(id)
 
     try {
-        if(!label || !percentage || !req.file) {
+        if(!label || !percentage) {
             throw new Error('Please fill all the fields.')
         }
 
