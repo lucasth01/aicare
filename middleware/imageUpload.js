@@ -16,7 +16,7 @@ function getPublicUrl(filename) {
 }
 
 const uploadImage = (req, res, next) => {
-    if (req.file !== undefined){
+    if (req.file === undefined){
         const gcsname = IMAGE_DIR + 'image-' + dateFormat(new Date(), "yyyymmdd-HHMMss")
         const file = bucket.file(gcsname)
     
