@@ -7,19 +7,19 @@ const gcs = new Storage({
 })
 
 const bucketName = 'aicare-bucket'
-const directory = 'aicare-ml/images/'
+const IMAGE_DIR = 'aicare-ml/images/'
+const PROFILE_DIR = 'profile-pictures/'
 const bucket = gcs.bucket(bucketName)
 
 function getPublicUrl(filename) {
     return 'https://storage.googleapis.com/' + bucketName + '/' + filename;
 }
 
-let ImgUpload = {}
+const uploadImage = (req, res, next) => {
+    
+    if (!req.file) next()
 
-ImgUpload.uploadToGcs = (req, res, next) => {
-    if (!req.file) res.status(400).json({ message: 'No file uploaded.' })
-
-    const gcsname = directory + 'image-' + dateFormat(new Date(), "yyyymmdd-HHMMss")
+    const gcsname = IMAGE_DIR + 'image-' + dateFormat(new Date(), "yyyymmdd-HHMMss")
     const file = bucket.file(gcsname)
 
     const stream = file.createWriteStream({
@@ -43,4 +43,31 @@ ImgUpload.uploadToGcs = (req, res, next) => {
     stream.end(req.file.buffer)
 }
 
-module.exports = ImgUpload
+const uploadProfile = (req, res, next) => {
+    if (!req.file) res.status(400).json({ message: 'No photo uploaded.' })
+
+    const gcsname = PROFILE_DIR + 'image-' + dateFormat(new Date(), "yyyymmdd-HHMMss")
+    const file = bucket.file(gcsname)
+
+    const stream = file.createWriteStream({
+        metadata: {
+            contentType: req.file.mimetype
+        }
+    })
+
+    stream.on('error', (err) => {
+        req.file.cloudStorageError = err
+        console.log(err)
+        next()
+    })
+
+    stream.on('finish', () => {
+        req.file.cloudStorageObject = gcsname
+        req.file.cloudStoragePublicUrl = getPublicUrl(gcsname)
+        next()
+    })
+
+    stream.end(req.file.buffer)
+}
+
+module.exports = { uploadImage, uploadProfile }
